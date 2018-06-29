@@ -43,6 +43,10 @@ iframe.query-client, iframe.website {
   height: 66%;
 }
 
+.label {
+  position: absolute;
+}
+
 /* Queries */
 ol.query > li {
   min-height: 126px;
