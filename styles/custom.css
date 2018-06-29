@@ -12,3 +12,38 @@ p.venue {
 .toc.slide h2 {
   display: none;
 }
+
+iframe.image {
+  width: 100%;
+  height: 420px;
+}
+iframe.graph {
+  width: 1024px;
+  height: 492px;
+  margin: -30px -60px;
+  overflow: hidden;
+}
+iframe.query-client, iframe.website {
+  width: 100%;
+  height: 462px;
+}
+
+/* Queries */
+ol.query > li {
+  min-height: 126px;
+  margin-bottom: 0;
+}
+ol.query > li > ul  {
+  margin-left: 0;
+}
+ol.query .count {
+  float: right;
+  color: #CC4320;
+}
+ol.query em {
+  color: #737373;
+}
+ol.query code {
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
