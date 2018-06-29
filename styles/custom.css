@@ -43,6 +43,13 @@ iframe.query-client, iframe.website {
   height: 66%;
 }
 
+.title.slide .logo img {
+  position: absolute;
+  right: 60px;
+  bottom: 90px;
+  width: 420px;
+}
+
 .label {
   position: absolute;
 }
