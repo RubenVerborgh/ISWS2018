@@ -5,3 +5,10 @@ p.venue {
   font-style: italic;
   margin-bottom: 1em;
 }
+
+.toc.slide ul {
+  margin-top: 60px;
+}
+.toc.slide h2 {
+  display: none;
+}
