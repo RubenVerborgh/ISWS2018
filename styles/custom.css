@@ -12,6 +12,11 @@ p.venue {
 .toc.slide h2 {
   display: none;
 }
+.toc.slide ul li em {
+  float: right;
+  font-weight: normal;
+  opacity: .66;
+}
 
 /* Images and embeds */
 iframe.image {
