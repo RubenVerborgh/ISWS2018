@@ -714,9 +714,251 @@
       <li><a href="#toc-issues">Some (societal) issues with data</a></li>
       <li><a href="#toc-blockchain">Decentralized consensus: blockchains</a></li>
       <li><a href="#toc-ldf">Decentralized data on the Web</a></li>
-      <li class="current"><a href="#toc-solid">Decentralized social networking</a></li>
-      <li><a href="#toc-connecting">Connecting blockchain and Linked Data</a></li>
+      <li class="current">
+        <a href="#toc-solid">Decentralized social networking</a>
+        <ul>
+          <li class="current"><a href="#toc-solid">Creators become owners</a></li>
+          <li><a href="#toc-apps-views">Apps become views</a></li>
+          <li><a href="#toc-interfaces-queries">Interfaces become queries</a></li>
+        </ul>
+      </li>
+      <li><a href="#toc-publication-metadata">The story of a small metadata publisher</a></li>
+      <li><a href="#toc-roles">The lead and the follow</a></li>
     </ul>
+  </div>
+
+  <div class="slide" id="axis">
+    <h2>
+      Decentralization can be realized<br>
+      at very different scales.
+    </h2>
+    <figure class="cover width margin">
+      <img src="images/decentralization-axis.svg" alt="">
+    </figure>
+  </div>
+
+  <div class="slide" id="facebook">
+    <h2>
+      Every piece of data in decentralized apps<br>
+      can come from a different place.
+    </h2>
+    <figure class="cover height margin">
+      <img src="images/decentralized-facebook.svg" alt="">
+    </figure>
+  </div>
+
+  <div class="slide" id="solid">
+    <h2>
+      <em>Solid</em> is an application platform for<br>
+      decentralization through Linked Data.
+    </h2>
+    <iframe class="website" src="https://solid.mit.edu/"></iframe>
+  </div>
+
+  <div class="slide" id="like">
+    <h2>
+      The creator represents each data item<br>
+      as Linked Data.
+    </h2>
+    <pre><code>PREFIX as: &lt;https://www.w3.org/ns/activitystreams#&gt;
+PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+
+&lt;#elag2018&gt; a as:Like;
+  as:actor  &lt;https://ruben.verborgh.org/profile/#me&gt;;
+  as:object &lt;https://www.elag2018.org/#conference&gt;;
+  as:published "2018-06-05T07:00:00Z"^^xsd:dateTime.</code></pre>
+  </div>
+
+  <div class="slide" id="announce">
+    <h2>
+      Others can learn about my data<br>
+      through Linked Data Notifications.
+    </h2>
+    <pre><code>PREFIX as: &lt;https://www.w3.org/ns/activitystreams#&gt;
+PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+
+_:announce a as:Announce;
+  as:actor  &lt;https://ruben.verborgh.org/profile/#me&gt;;
+  as:object &lt;https://drive.verborgh.org/likes/#elag2018&gt;;
+  as:target &lt;https://www.elag2018.org/#conference&gt;;
+  as:updated "2018-06-05T07:00:00Z"^^xsd:dateTime.</code></pre>
+  </div>
+
+  <div class="slide" id="inbox">
+    <h2>
+      A Linked Data Notification is<br>
+      posted to your inbox.
+    </h2>
+    <pre><code>POST /inbox/ HTTP/1.1
+Host: www.elag2018.org
+Content-Type: text/turtle</code></pre>
+    <pre class="next"><code>HTTP/1.1 201 Created
+Location: https://www.elag2018.org/inbox/3679efc35</code></pre>
+  </div>
+
+  <div class="slide" id="linking-back">
+    <h2>
+      If I place a comment,<br>
+      you can choose to link back.
+    </h2>
+    <ul>
+      <li class="next">
+        you will know about my comment
+        <ul>
+          <li>if you advertise a notification inbox</li>
+          <li>if I choose to notify you</li>
+        </ul>
+      </li>
+      <li class="next">
+        you can see my comment
+        <ul>
+          <li>if I give you access permissions</li>
+        </ul>
+      </li>
+      <li class="next">
+        you can link back to my comment
+        <ul>
+          <li>if you want to</li>
+          <li>so others can discover it</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="toc slide" id="toc-apps-views">
+    <h2>Distributed Decentralised Semantic Web</h2>
+    <ul>
+      <li><a href="#toc-issues">Some (societal) issues with data</a></li>
+      <li><a href="#toc-blockchain">Decentralized consensus: blockchains</a></li>
+      <li><a href="#toc-ldf">Decentralized data on the Web</a></li>
+      <li class="current">
+        <a href="#toc-solid">Decentralized social networking</a>
+        <ul>
+          <li><a href="#toc-solid">Creators become owners</a></li>
+          <li class="current"><a href="#toc-apps-views">Apps become views</a></li>
+          <li><a href="#toc-interfaces-queries">Interfaces become queries</a></li>
+        </ul>
+      </li>
+      <li><a href="#toc-publication-metadata">The story of a small metadata publisher</a></li>
+      <li><a href="#toc-roles">The lead and the follow</a></li>
+    </ul>
+  </div>
+
+  <div class="slide" id="views">
+    <h2>
+      Multiple decentralized Web apps<br>
+      share access to data stores.
+    </h2>
+    <figure class="cover height margin">
+      <img src="images/apps-as-views.svg" alt="">
+    </figure>
+  </div>
+
+  <div class="slide" id="app-login">
+    <h2>
+      When visiting an application,<br>
+      you log in with an <em>external</em> identity.
+    </h2>
+    <ul>
+      <li class="next">
+        I go to <em>https://example.org/app</em>
+      </li>
+      <li class="next">
+        I log in with <em>https://ruben.verborgh.org/profile/#me</em>
+        <ul>
+          <li>giving the app permission to access (parts of) my data</li>
+        </ul>
+      </li>
+      <li class="next">
+        The app requests data on my behalf
+        <ul>
+          <li>from <em>ruben.verborgh.org</em></li>
+          <li>from my friend’s data pods</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="slide" id="markets">
+    <h2>
+      Different app and storage providers<br>
+      compete independently.
+    </h2>
+    <figure class="cover height margin">
+      <img src="images/data-and-app-markets.svg" alt="">
+    </figure>
+  </div>
+
+  <div class="toc slide" id="toc-interfaces-queries">
+    <h2>Distributed Decentralised Semantic Web</h2>
+    <ul>
+      <li><a href="#toc-issues">Some (societal) issues with data</a></li>
+      <li><a href="#toc-blockchain">Decentralized consensus: blockchains</a></li>
+      <li><a href="#toc-ldf">Decentralized data on the Web</a></li>
+      <li class="current">
+        <a href="#toc-solid">Decentralized social networking</a>
+        <ul>
+          <li><a href="#toc-solid">Creators become owners</a></li>
+          <li><a href="#toc-apps-views">Apps become views</a></li>
+          <li class="current"><a href="#toc-interfaces-queries">Interfaces become queries</a></li>
+        </ul>
+      </li>
+      <li><a href="#toc-publication-metadata">The story of a small metadata publisher</a></li>
+      <li><a href="#toc-roles">The lead and the follow</a></li>
+    </ul>
+  </div>
+
+    <div class="slide" id="requests">
+    <h2>
+      Hard-coded client–server contracts are<br>
+      unsustainable with multiple sources.
+    </h2>
+    <figure class="cover width margin">
+      <img src="images/request-based-interaction.svg" alt="">
+    </figure>
+  </div>
+
+  <div class="slide" id="requests-example">
+    <h2>
+      We have to manually contact sources<br>
+      and hope that contracts don’t change.
+    </h2>
+    <pre><code>const me = 'https://ruben.verborgh.org/profile/#me';
+const profile = await fetch(me);
+const triples = parseTurtle(await profile.text());
+const friends = triples.findObjects(me, 'foaf:knows');
+
+friends.forEach(friend =&gt; {
+  const profile = await fetch(friend);
+  const triples = parseTurtle(await profile.text());
+  // now find likes
+});</code></pre>
+  </div>
+
+  <div class="slide" id="queries">
+    <h2>
+      Query-based contracts can make<br>
+      decentralized Web apps more sustainable.<br>
+    </h2>
+    <figure class="cover width margin">
+      <img src="images/query-based-interaction.svg" alt="">
+    </figure>
+  </div>
+
+  <div class="slide" id="queries-example">
+    <h2>
+      This query captures the same intent<br>
+      independently of sources and interfaces.
+    </h2>
+    <pre><code>PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+PREFIX as: &lt;http://www.w3.org/ns/activitystreams#&gt;
+
+SELECT ?friend ?like WHERE {
+  &lt;https://ruben.verborgh.org/profile/#me&gt; foaf:knows ?friend.
+  &#95;:like a as:Like;
+    as:actor ?friend;
+    as:object ?like.
+}</code></pre>
   </div>
 
   <div class="toc slide" id="toc-connecting">
